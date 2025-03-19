@@ -17,19 +17,14 @@ import gym
 #     # You can submit this random agent to evaluate the performance of a purely random strategy.
 
 # Load the trained Q-table
-try:
-    with open("q_table.pkl", "rb") as f:
-        q_table = pickle.load(f)
-except FileNotFoundError:
-    q_table = None 
+
 
 prev = [0, 0, 0, 0]
 
 def get_action(obs):
 
     """Selects an action using the learned Q-table or falls back to random actions."""
-    if q_table is not None and obs in range(q_table.shape[0]) and random.random() < 0.5:
-        return np.argmax(q_table[obs])  # Choose best action
+
     global prev
     if prev == None:
         next = random.choice([0, 1, 2, 3])  # Random fallback
