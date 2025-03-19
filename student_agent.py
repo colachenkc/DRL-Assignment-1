@@ -24,13 +24,14 @@ import gym
 #     q_table = None  # Handle missing file case
 
 
-
+prev = -1
 def get_action(obs):
     """Selects an action using the learned Q-table or falls back to random actions."""
     # if q_table is not None and obs in range(q_table.shape[0]):
     #     return np.argmax(q_table[obs])  # Choose best action
-    prev = 0
+    global prev
     next = random.choice([0, 1, 2, 3])  # Random fallback
     while prev == next:
         next = random.choice([0, 1, 2, 3])
+    prev = next
     return next
