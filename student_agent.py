@@ -18,10 +18,12 @@ import gym
 
 # Load the trained Q-table
 try:
-    with open("q_table.pkl", "rb") as f:
+    with open("q_table1.pkl", "rb") as f:
         q_table = pickle.load(f)
 except FileNotFoundError:
     q_table = None  # Handle missing file case
+
+prev = 0
 
 def get_action(obs):
     """Selects an action using the learned Q-table or falls back to random actions."""
